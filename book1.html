@@ -59,7 +59,9 @@ h2{margin:0;font-size:30px;font-weight:400}
 #learn .ldots span{width:14px;height:14px;border-radius:50%;background:var(--line)}
 #learn .ldots span.on{background:var(--accent)}
 #learn .ldots span.done{background:var(--ok)}
+#learn .ldots span.name{border-radius:4px;width:22px}
 #ltext{margin:0;font-size:34px;line-height:1.4;min-height:3em}
+#ltext .term{display:inline-block;background:#fef3c7;color:#92400e;border:3px solid #f59e0b;border-radius:16px;padding:2px 16px;font-size:40px}
 #lsub{margin:0;font-size:20px;color:var(--sub);line-height:1.5}
 #adult{margin:0;font-size:14px;color:var(--sub);font-family:system-ui,'Malgun Gothic',sans-serif}
 #quiz{display:flex;flex-direction:column;gap:12px}
@@ -203,6 +205,7 @@ const LESSONS = [
     hint2:'무거운 건 세게 당겨지지만, 그만큼 움직이기도 힘들어요. 그래서 결국 똑같아요.',
     kid:'땅이 둘 다 똑같이 빠르게 당겨서!',
     steps:[['땅은 모든 걸 아래로 당겨요.', 3.2], ['무거운 건 세게 당겨요. 그런데 무거우면 움직이기도 힘들어요.', 4], ['세게 당기는 만큼 움직이기 힘드니까, 결국 똑같이 빨라요!', 3.5], ['공기가 없는 달에서는 망치랑 깃털도 같이 떨어져요.', 3.5]],
+    name:{ term:'자유 낙하', what:'아무것도 붙잡지 않고 땅이 당기는 대로 떨어지는 거예요. 무거워도 가벼워도 똑같이 빨라져요!' },
     adult:'어른용 · 자유 낙하: 가속도 a = F/m = mg/m = g. 질량과 무관. 지구에서 깃털이 늦는 건 공기 저항 때문.' },
 
   { scene:'fma', law:'무거우면 느려요', title:'같은 힘으로 밀기', T:4.2,
@@ -215,6 +218,7 @@ const LESSONS = [
     hint2:'같은 힘이면 가벼운 쪽이 금방 빨라지고, 무거운 쪽은 천천히 빨라져요.',
     kid:'가벼워서 금방 빨라져서!',
     steps:[['두 수레를 똑같은 힘으로 밀어요.', 3], ['가벼운 수레는 금방 쌩 빨라져요.', 4], ['무거운 수레는 천천히 빨라져요. 3배 무거우면 3배 천천히!', 4.2]],
+    name:{ term:'힘과 가속도의 법칙', what:'힘이 같으면 가벼운 건 금방 빨라지고, 무거운 건 천천히 빨라져요. 힘 = 무게 × 빨라지는 정도!' },
     adult:'어른용 · 뉴턴 제2법칙 F = ma. 같은 힘이면 가속도는 질량에 반비례. s = ½at² 이므로 같은 시간 동안 거리도 1/3.' },
 
   { scene:'momentum', law:'서로 밀기', title:'얼음 위에서 아빠랑 서로 밀기', T:5,
@@ -227,6 +231,7 @@ const LESSONS = [
     hint2:'내가 아빠를 미는 힘이랑 아빠가 나를 미는 힘은 똑같아요. 다른 건 무게예요.',
     kid:'내가 더 가벼워서!',
     steps:[['내가 아빠를 밀면, 아빠도 나를 똑같은 힘으로 밀어요.', 3.5], ['같은 힘이면 가벼운 쪽이 더 빨리 밀려나요.', 4.5], ['아빠는 무거워서 천천히, 나는 가벼워서 쌩! 아빠 무게가 2배면 나는 2배 빨라요.', 5]],
+    name:{ term:'운동량 보존', what:'서로 밀면 무거운 쪽은 천천히, 가벼운 쪽은 빠르게 밀려나요. 무게 × 빠르기가 양쪽에서 똑같아요!' },
     adult:'어른용 · 작용 반작용 + 운동량 보존: m₁v₁ = m₂v₂. 질량이 절반이면 속도는 2배.' },
 
   { scene:'projectile', law:'떨어뜨리기 vs 던지기', title:'그냥 떨어뜨린 공, 옆으로 던진 공', T:3.6,
@@ -239,6 +244,7 @@ const LESSONS = [
     hint2:'옆으로 가는 것과 아래로 떨어지는 것은 따로따로예요.',
     kid:'옆으로 가도 떨어지는 건 똑같아서!',
     steps:[['땅은 아래로만 당겨요.', 3], ['옆으로 가는 건 땅이 상관 안 해요. 옆으로는 그대로 가요.', 3.5], ['그래서 아래로 떨어지는 건 둘이 똑같아요. 파란 공은 옆으로도 간 것뿐!', 3.6]],
+    name:{ term:'포물선 운동', what:'옆으로 던진 물건이 그리는 둥근 길이에요. 옆으로 가는 것과 아래로 떨어지는 것은 따로따로!' },
     adult:'어른용 · 포물선 운동의 독립성: 수평은 등속, 수직은 등가속도. 낙하 시간 √(2h/g)는 수평 속도와 무관.' },
 
   { scene:'coaster', law:'롤러코스터 언덕', title:'어느 언덕까지 넘을까?', T:16, cam:[0, 4, 11],
@@ -251,6 +257,7 @@ const LESSONS = [
     hint2:'높은 곳에 있으면 힘을 모아 둔 거예요. 모아 둔 만큼만 다시 올라갈 수 있어요.',
     kid:'출발한 곳보다 높이 못 올라가서!',
     steps:[['높은 곳에 있는 건 힘을 모아 둔 거예요.', 3], ['내려오면 모아 둔 힘이 빠르기로 바뀌어요. 쌩!', 2.6], ['올라가면 빠르기가 다시 높이로 바뀌어요. 출발한 높이까지만!', 9]],
+    name:{ term:'에너지 보존', what:'에너지는 없어지지도 새로 생기지도 않아요. 높이와 빠르기로 모습만 바뀌어요!' },
     adult:'어른용 · 역학적 에너지 보존: mgh₀ = mgh + ½mv². 마찰이 없으면 출발 높이까지만 오른다.' },
 
   { scene:'ship', law:'쇠배는 왜 뜰까?', title:'쇠공과 쇠 그릇', T:5,
@@ -263,6 +270,7 @@ const LESSONS = [
     hint2:'무게는 똑같아요. 물속에서 자리를 얼마나 차지하는지가 달라요.',
     kid:'넓어서 물을 많이 밀어내서!',
     steps:[['물은 들어온 물건을 위로 밀어 올려요.', 3], ['물을 많이 밀어낼수록 더 세게 밀어 올려요.', 3], ['그릇은 넓어서 물을 많이 밀어내요. 그래서 둥둥! 공은 조금만 밀어내서 꼬르륵.', 5]],
+    name:{ term:'부력', what:'물이 물건을 위로 밀어 올리는 힘이에요. 물을 많이 밀어낼수록 세져요!' },
     adult:'어른용 · 아르키메데스 원리: 부력 = 밀어낸 물의 무게. 그릇+공기의 평균 밀도가 물보다 작으면 뜬다.' },
 
   { scene:'torque', law:'시소의 비밀', title:'아빠랑 시소 반듯하게 만들기', T:6.5,
@@ -275,6 +283,7 @@ const LESSONS = [
     hint2:'내 무게는 그대로예요. 가운데에서 멀어질수록 시소를 누르는 힘이 커져요.',
     kid:'멀리 앉으면 더 세게 눌러서!',
     steps:[['가운데 가까이 앉으면 시소를 조금만 눌러요.', 3], ['멀리 앉으면 시소를 많이 눌러요.', 3], ['무게 × 거리! 아빠 60 × 1 = 60, 나 20 × 3 = 60. 똑같아서 반듯!', 6.5]],
+    name:{ term:'돌림힘', what:'물건을 빙 돌리려는 힘이에요. 무게 × 가운데에서 떨어진 거리! 시소, 문손잡이, 스패너의 비밀이에요.' },
     adult:'어른용 · 돌림힘(토크) τ = r × F. 양쪽 돌림힘이 같으면 회전 평형. 지레의 원리.' },
 
   { scene:'refraction', law:'물속은 꺾여 보여요', title:'물속 물고기 찌르기', T:7,
@@ -287,6 +296,7 @@ const LESSONS = [
     hint2:'물고기에서 나온 빛은 물 밖으로 나올 때 꺾여요. 눈은 그걸 몰라요.',
     kid:'빛이 물에서 나올 때 꺾여서!',
     steps:[['물고기에서 나온 빛이 내 눈으로 와요.', 3], ['빛은 물에서 나올 때 꺾여요!', 3], ['눈은 빛이 곧게 온 줄 알아요. 그래서 물고기가 위쪽에 보여요.', 3.5], ['그러니까 보이는 곳보다 더 아래를 찔러야 해요!', 3]],
+    name:{ term:'굴절', what:'빛이 물이나 유리를 지날 때 꺾이는 거예요. 그래서 물컵 속 빨대가 꺾여 보여요!' },
     adult:'어른용 · 빛의 굴절(스넬의 법칙 n₁sinθ₁ = n₂sinθ₂). 물속 물체의 겉보기 깊이 ≈ 실제 깊이의 3/4.' },
 
   { scene:'induction', law:'자석으로 전기 만들기', title:'건전지 없는 전구', T:7.5,
@@ -299,6 +309,7 @@ const LESSONS = [
     hint2:'전기를 만드는 건 자석이 아니라 자석의 "움직임"이에요.',
     kid:'자석이 움직일 때만 전기가 생겨서!',
     steps:[['자석을 코일에 쑥 넣으면 반짝!', 2.4], ['가만히 두면 꺼져요. 움직임이 없으니까요.', 3], ['넣었다 뺐다 계속 움직이면 계속 반짝반짝! 발전소도 커다란 자석을 빙빙 돌려서 전기를 만들어요.', 4]],
+    name:{ term:'전자기 유도', what:'자석을 움직여서 전기를 만드는 거예요. 발전소도 이렇게 전기를 만들어요!' },
     adult:'어른용 · 패러데이 전자기 유도: 코일을 지나는 자기장이 변할 때만 전류. 발전기의 원리.' },
 
   { scene:'pendulum', law:'흔들흔들 그네', title:'무거운 추 vs 가벼운 추', T:30,
@@ -311,6 +322,7 @@ const LESSONS = [
     hint2:'그네의 박자를 정하는 건 추의 무게가 아니라 줄의 길이예요.',
     kid:'줄 길이가 같아서!',
     steps:[['무거워도 가벼워도 박자가 똑같아요.', 9], ['줄이 짧으면 박자가 빨라져요.', 9], ['줄이 길면 박자가 느려져요. 박자는 줄 길이가 정해요!', 9]],
+    name:{ term:'진자', what:'줄에 매달려 흔들흔들하는 거예요. 왔다 갔다 하는 박자는 줄 길이가 정해요!' },
     adult:'어른용 · 단진자 주기 T = 2π√(L/g). 질량과 무관, 길이와 중력만 관계.' },
 
   { scene:'doppler', law:'구급차 소리', title:'위이잉~ 우우웅', T:6.7, cam:[0, 5, 9.5],
@@ -323,6 +335,7 @@ const LESSONS = [
     hint2:'소리는 물결처럼 퍼져요. 달려오면 앞쪽 물결이 눌려서 촘촘해져요.',
     kid:'앞쪽 소리가 촘촘하게 눌려서!',
     steps:[['소리는 물결처럼 둥글게 퍼져요.', 4], ['차가 달리면 앞쪽 물결은 촘촘, 뒤쪽 물결은 성겨요.', 6.7], ['촘촘하면 높은 소리, 성기면 낮은 소리! 그래서 위이잉~ 우우웅.', 6.7]],
+    name:{ term:'도플러 효과', what:'소리 나는 것이 다가오면 높게, 멀어지면 낮게 들리는 거예요!' },
     adult:'어른용 · 도플러 효과 f\' = f·v/(v ∓ v_s). 경찰 속도 측정기, 천문학의 적색편이도 같은 원리.' },
 
   { scene:'orbit', law:'우주 대포', title:'산꼭대기에서 대포 쏘기', T:16, cam:[0, 3.5, 9],
@@ -335,6 +348,7 @@ const LESSONS = [
     hint2:'떨어지긴 떨어져요. 그런데 옆으로 너무 빨라서 땅이 그만큼 휘어 멀어져요.',
     kid:'떨어지는 만큼 땅이 둥글게 멀어져서!',
     steps:[['천천히 쏘면 금방 떨어져요.', 2.5], ['빠르게 쏘면 더 멀리 가서 떨어져요.', 3.5], ['아주 빠르면 떨어지는 만큼 땅이 둥글게 멀어져서, 계속 떨어지면서 빙빙 돌아요! 우주정거장도 이렇게 돌아요.', 9]],
+    name:{ term:'궤도', what:'빙빙 도는 길이에요. 달과 우주정거장은 계속 떨어지면서 지구 둘레를 돌아요!' },
     adult:'어른용 · 뉴턴의 대포. 원궤도 속도 v = √(GM/r) ≈ 7.9 km/s. 무중력은 "함께 떨어지는" 자유낙하 상태.' },
 ];
 
@@ -784,12 +798,13 @@ function resize() {
 resize();
 new ResizeObserver(resize).observe(stage);
 
-let cur = 0, group = null, draw = null, playing = false, t0 = 0, step = 0, phase = 0, lstep = 0;
+let cur = 0, group = null, draw = null, playing = false, t0 = 0, step = 0, phase = 0, lstep = 0, nameSprite = null;
 const clock = new THREE.Clock(), solved = new Set();
 const phaseT = () => phase === 0 ? LESSONS[cur].T : LESSONS[cur].steps[phase - 1][1];
 renderer.setAnimationLoop(() => {
   controls.update();
   if (draw) draw(playing ? (clock.getElapsedTime() - t0) % phaseT() : 0, phase);
+  if (nameSprite) nameSprite.scale.set(.8 * 6 * pulse(clock.getElapsedTime() * .7), .8 * pulse(clock.getElapsedTime() * .7), 1);
   renderer.render(scene, camera);
 });
 
@@ -813,6 +828,7 @@ const readQuestion = () => {
   const [q, ch] = step === 0 ? [L.q, L.choices] : [L.q2, L.choices2];
   say(`${step === 0 ? L.story + ' ' : ''}${q} ${order.map((k, i) => `${i + 1}번, ${ch[k][1]}`).join(' ')}`);
 };
+const irago = w => ((w.charCodeAt(w.length - 1) - 0xAC00) % 28 ? '이라고' : '라고'); // 받침 유무에 따라 "이라고/라고"
 
 // ── 화면 ──
 const dots = $('#dots');
@@ -841,7 +857,7 @@ function renderStep() {
 }
 
 function show(i) {
-  cur = i; playing = false; step = 0; phase = 0; lstep = 0;
+  cur = i; playing = false; step = 0; phase = 0; lstep = 0; nameSprite = null;
   const L = LESSONS[i];
   if (group) {
     scene.remove(group);
@@ -893,22 +909,33 @@ function pick(k, b) {
   if (solved.size === LESSONS.length) toast('🏆 12개를 모두 풀었어요! 꼬마 물리 박사 탄생!');
 }
 
-// ── 왜 그런지 보기 (장면마다 한 줄 + 애니메이션) ──
+// ── 왜 그런지 보기 (장면마다 한 줄 + 애니메이션, 마지막은 이름표) ──
 function renderLearn() {
-  const L = LESSONS[cur], n = L.steps.length;
-  $('#ldots').replaceChildren(...L.steps.map((_, i) => { const s = document.createElement('span'); s.className = i < lstep ? 'done' : i === lstep ? 'on' : ''; return s; }));
-  $('#ltext').textContent = L.steps[lstep][0];
-  $('#lsub').textContent = `장면 ${lstep + 1} / ${n}`;
-  $('#lnextBtn').textContent = lstep === n - 1 ? (cur === LESSONS.length - 1 ? '처음으로 ▶' : '다음 법칙 ▶') : '다음 장면 ▶';
-  $('#adult').textContent = lstep === n - 1 ? L.adult : '';
-  phase = lstep + 1; playing = true; t0 = clock.getElapsedTime();
-  say(L.steps[lstep][0]);
+  const L = LESSONS[cur], n = L.steps.length, isName = lstep === n;
+  $('#ldots').replaceChildren(...[...L.steps, null].map((s, i) => { const d = document.createElement('span'); d.className = (i < lstep ? 'done' : i === lstep ? 'on' : '') + (s === null ? ' name' : ''); return d; }));
+  if (nameSprite) { group.remove(nameSprite); nameSprite = null; }
+  if (isName) {
+    const term = L.name.term;
+    $('#ltext').replaceChildren('이걸 ', Object.assign(document.createElement('span'), { className: 'term', textContent: term }), `${irago(term)} 해요!`);
+    $('#lsub').textContent = L.name.what;
+    $('#adult').textContent = L.adult;
+    nameSprite = label(term, .8, '#fde047'); nameSprite.position.set(0, 4.4, 0); group.add(nameSprite);
+    phase = 0; playing = true; t0 = clock.getElapsedTime();
+    say(`이걸 ${term}${irago(term)} 해요! ${L.name.what}`);
+  } else {
+    $('#ltext').textContent = L.steps[lstep][0];
+    $('#lsub').textContent = `장면 ${lstep + 1} / ${n}`;
+    $('#adult').textContent = '';
+    phase = lstep + 1; playing = true; t0 = clock.getElapsedTime();
+    say(L.steps[lstep][0]);
+  }
+  $('#lnextBtn').textContent = isName ? (cur === LESSONS.length - 1 ? '처음으로 ▶' : '다음 법칙 ▶') : lstep === n - 1 ? '이름 알아보기 ▶' : '다음 장면 ▶';
 }
 $('#learnBtn').onclick = () => {
   lstep = 0; $('#quiz').classList.add('off'); $('#learn').classList.add('on'); renderLearn();
 };
 $('#lnextBtn').onclick = () => {
-  if (lstep < LESSONS[cur].steps.length - 1) { lstep++; renderLearn(); }
+  if (lstep < LESSONS[cur].steps.length) { lstep++; renderLearn(); }
   else show((cur + 1) % LESSONS.length);
 };
 
@@ -919,11 +946,11 @@ function toast(msg) {
 
 $('#prevBtn').onclick = () => cur > 0 && show(cur - 1);
 $('#nextBtn').onclick = () => show((cur + 1) % LESSONS.length);
-$('#replayBtn').onclick = () => { t0 = clock.getElapsedTime(); say(LESSONS[cur].steps[lstep][0]); };
+$('#replayBtn').onclick = () => { t0 = clock.getElapsedTime(); const L = LESSONS[cur]; say(lstep === L.steps.length ? `이걸 ${L.name.term}${irago(L.name.term)} 해요!` : L.steps[lstep][0]); };
 $('#homeBtn').onclick = home;
 $('#voiceBtn').onclick = e => {
   voice = !voice; e.currentTarget.setAttribute('aria-pressed', voice);
-  if (voice) { if ($('#learn').classList.contains('on')) say(LESSONS[cur].steps[lstep][0]); else readQuestion(); } else window.speechSynthesis?.cancel();
+  if (voice) { if ($('#learn').classList.contains('on')) $('#replayBtn').click(); else readQuestion(); } else window.speechSynthesis?.cancel();
 };
 renderer.domElement.addEventListener('pointerdown', () => $('#hint').style.opacity = 0, { once: true });
 
